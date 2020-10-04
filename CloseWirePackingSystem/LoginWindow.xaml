@@ -1,0 +1,70 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloseWirePackingSystem"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
+        x:Class="CloseWirePackingSystem.LoginWindow"
+        mc:Ignorable="d"
+        Title="登录" Height="400" Width="720" WindowStyle="None" ResizeMode="NoResize" Loaded="Page_Loaded">
+    <Grid>
+        <DockPanel HorizontalAlignment="Left" Height="400" LastChildFill="False" VerticalAlignment="Top" Width="720">
+            <DockPanel x:Name="logoPanel" Height="400" LastChildFill="False" VerticalAlignment="Top" Width="280">
+                <DockPanel.Background>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#FF8AF7FE" Offset="1"/>
+                        <!--Maintainer #ffffff/#004080 -->
+                        <!--Manager #ffffff/#c3b090 -->
+                        <!--Quality #ff877c/#b6335f -->
+                        <GradientStop Color="#FF66A6FE" Offset="0"/>
+                    </LinearGradientBrush>
+                </DockPanel.Background>
+                <Image x:Name="Logo" Width="200" Height="200" Source="Resources/logo.png" Margin="40,0,0,0" MouseLeftButtonDown="Logo_MouseLeftButtonDown">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.2" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Image.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </DockPanel>
+            <!-- Image x:Name="Logo" Width="280" Source="Resources/CloseWirePackingSystem_LOGO_Worker.jpg"/-->
+            <DockPanel Height="400" LastChildFill="False" VerticalAlignment="Top" Width="440">
+                <StackPanel x:Name="FormPanel" Height="400" VerticalAlignment="Top" Width="440">
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF646363" Offset="0"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <Grid x:Name="grid" Height="50" Background="Transparent"/>
+                    <Label x:Name="SystemNameLabel" Content="闭式线束包装控制系统" FontSize="28" FontFamily="Microsoft YaHei" Margin="0,0,0,0" HorizontalAlignment="Center" Foreground="White" />
+                    <Label x:Name="VersionLabel" Content="Ver 20200911" FontSize="12" FontFamily="Microsoft YaHei" Margin="240,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" />
+                    <Label x:Name="KanbanLabel" FontSize="16" Content="看板时间:" FontFamily="Microsoft YaHei" Margin="50,5,50,5" Foreground="White"/>
+                    <ComboBox x:Name="KanbanTimeSelector" FontSize="14" FontFamily="Microsoft Yahei" Margin="60,0,60,0" BorderBrush="Black" Background="Black" IsEditable="True" BorderThickness="2" Opacity="0.75" Style="{DynamicResource ComboBoxLoginStyle}" Padding="8,2" />
+                    <Label x:Name="CardIDLabel" FontSize="16" Content="操作者卡号:" FontFamily="Microsoft YaHei" Margin="50,15,50,5" Foreground="White"/>
+                    <ComboBox x:Name="CardIDSelector" FontSize="14" FontFamily="Microsoft Yahei" Margin="60,0,60,0" BorderBrush="Black" BorderThickness="2" IsEditable="True" Background="Black" Opacity="0.75" Style="{DynamicResource ComboBoxLoginStyle}" Padding="8,2"/>
+                    <Grid Width="400" Height="30" HorizontalAlignment="Left" Margin="20,40,0,0">
+                        <Button x:Name="LoginButton" Content="登录" FontSize="16" Width="150" HorizontalAlignment="Left" Background="Black" BorderThickness="2" Foreground="White" Margin="30,0,0,0" Style="{DynamicResource LoginButtonStyle}"/>
+                        <Button x:Name="QuitButton" Content="退出" FontSize="16" Width="150" HorizontalAlignment="Right" Background="Black" BorderThickness="2" Click="LoginQuitButton_Click" Foreground="White" Margin="0,0,30,0" Style="{DynamicResource LoginButtonStyle}" />
+                    </Grid>
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
